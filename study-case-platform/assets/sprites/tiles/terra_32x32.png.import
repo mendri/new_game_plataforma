@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpxy7q757ga3g"
-path="res://.godot/imported/terra_32x32.png-e7e7465fea0e9e125d8389be6a85b867.ctex"
+path="res://.godot/imported/terra_32x32.png-ece62f1b26f7e91ad374f4ac6daac4b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/terra_32x32.png"
-dest_files=["res://.godot/imported/terra_32x32.png-e7e7465fea0e9e125d8389be6a85b867.ctex"]
+source_file="res://assets/sprites/tiles/terra_32x32.png"
+dest_files=["res://.godot/imported/terra_32x32.png-ece62f1b26f7e91ad374f4ac6daac4b1.ctex"]
 
 [params]
 
