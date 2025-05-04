@@ -24,5 +24,8 @@ func _physics_process(delta):
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = -jump_force
+			var jump_vfx = preload("res://scenes/vfx/jump_vfx.tscn").instantiate()
+			jump_vfx.position = position + Vector2(0, 0)
+			get_parent().add_child(jump_vfx)
 
 	move_and_slide()

@@ -1,0 +1,38 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://du3rquqseqjts"]
+
+[ext_resource type="Texture2D" uid="uid://r17tndc72tql" path="res://assets/sprites/player/lhama_32x32.png" id="1_hlgaa"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hlgaa")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hlgaa")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hlgaa")
+}],
+"loop": true,
+"name": &"jumping",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hlgaa")
+}],
+"loop": true,
+"name": &"running",
+"speed": 5.0
+}]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4wi3na2kp7vs"]
 
-[ext_resource type="Texture2D" uid="uid://r17tndc72tql" path="res://assets/sprites/player/lhama_32x32.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://fmpgecd5olou" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="SpriteFrames" uid="uid://du3rquqseqjts" path="res://resources/player/player.tres" id="2_g2els"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
 radius = 3.0
@@ -10,10 +10,13 @@ height = 18.0
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 32768
 script = ExtResource("1_g2els")
+speed = 250
+max_speed = 130
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_3vyb7")
+sprite_frames = ExtResource("2_g2els")
+animation = &"idle"
 offset = Vector2(0, -9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
