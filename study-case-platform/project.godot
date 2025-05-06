@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Study Case Platform"
-run/main_scene="uid://bioqab8w486xj"
+run/main_scene="uid://o8hk0s7t6jrj"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1280
+window/size/mode=3
 
 [gui]
 

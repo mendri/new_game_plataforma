@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://o8hk0s7t6jrj"]
+[gd_scene load_steps=3 format=3 uid="uid://o8hk0s7t6jrj"]
 
+[ext_resource type="Script" uid="uid://4i68ocwcw3he" path="res://scripts/main_menu.gd" id="1_fe2o3"]
 [ext_resource type="PackedScene" uid="uid://brn8xnoxu8lw5" path="res://scenes/ui/sound_button.tscn" id="1_sl1te"]
 
 [node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_fe2o3")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -16,22 +18,36 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 4
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Study Case Platform"
 
-[node name="PlayButton" parent="MarginContainer/PanelContainer/VBoxContainer" instance=ExtResource("1_sl1te")]
+[node name="PlayButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sl1te")]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Play
 "
 
-[node name="QuitButton" parent="MarginContainer/PanelContainer/VBoxContainer" instance=ExtResource("1_sl1te")]
+[node name="OptionsButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sl1te")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sl1te")]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
