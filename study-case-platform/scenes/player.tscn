@@ -4,7 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://du3rquqseqjts" path="res://resources/player/player.tres" id="2_g2els"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
-radius = 3.0
+radius = 4.0
 height = 18.0
 
 [node name="Player" type="CharacterBody2D"]
@@ -17,10 +17,10 @@ max_speed = 130
 texture_filter = 1
 sprite_frames = ExtResource("2_g2els")
 animation = &"idle"
-offset = Vector2(0, -9)
+offset = Vector2(1, -9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -9)
+position = Vector2(0, -9)
 shape = SubResource("CapsuleShape2D_3vyb7")
 
 [node name="Camera2D" type="Camera2D" parent="."]

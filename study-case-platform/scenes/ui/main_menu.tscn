@@ -1,53 +1,64 @@
-[gd_scene load_steps=3 format=3 uid="uid://o8hk0s7t6jrj"]
+[gd_scene load_steps=5 format=3 uid="uid://o8hk0s7t6jrj"]
 
 [ext_resource type="Script" uid="uid://4i68ocwcw3he" path="res://scripts/main_menu.gd" id="1_fe2o3"]
 [ext_resource type="PackedScene" uid="uid://brn8xnoxu8lw5" path="res://scenes/ui/sound_button.tscn" id="1_sl1te"]
+[ext_resource type="PackedScene" uid="uid://cp6ljo08ubsjk" path="res://scenes/tilemap/grass_tile_map_layer.tscn" id="2_1g8jr"]
+[ext_resource type="PackedScene" uid="uid://oj21lokcpy05" path="res://scenes/ui/level_select_screen.tscn" id="4_m1kxf"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_fe2o3")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="GrassTileMapLayer" parent="." instance=ExtResource("2_1g8jr")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenuContainer" type="MarginContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MainMenuContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenuContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenuContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 4
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/MainMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Study Case Platform"
 
-[node name="PlayButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sl1te")]
+[node name="PlayButton" parent="CanvasLayer/MainMenuContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sl1te")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Play
 "
 
-[node name="OptionsButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sl1te")]
+[node name="OptionsButton" parent="CanvasLayer/MainMenuContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sl1te")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Options"
 
-[node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sl1te")]
+[node name="QuitButton" parent="CanvasLayer/MainMenuContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sl1te")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
+
+[node name="LevelSelectScreen" parent="CanvasLayer" instance=ExtResource("4_m1kxf")]
+unique_name_in_owner = true
+visible = false

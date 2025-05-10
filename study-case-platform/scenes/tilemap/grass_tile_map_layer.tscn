@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp6ljo08ubsjk"]
+
+[ext_resource type="TileSet" uid="uid://4lsqydcx5fk3" path="res://resources/tiles/grass_level_tile_set.tres" id="1_lmcg0"]
+
+[node name="GrassTileMapLayer" type="TileMapLayer"]
+tile_set = ExtResource("1_lmcg0")
+rendering_quadrant_size = 32

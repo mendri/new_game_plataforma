@@ -12,8 +12,10 @@ func _ready():
 func _physics_process(delta):
 	if Input.is_action_pressed("move_right"):
 		velocity.x += speed * delta
+		$AnimatedSprite2D.scale.x = 1
 	elif Input.is_action_pressed("move_left"):
 		velocity.x -= speed * delta
+		$AnimatedSprite2D.scale.x = -1
 	else:
 		if abs(velocity.x) > 0:
 			velocity.x = int(lerp(velocity.x, 0.0, friction * delta))

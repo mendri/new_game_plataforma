@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="LevelDefinitionResource" load_steps=2 format=3 uid="uid://b1ntdjbfmt2jw"]
+
+[ext_resource type="Script" uid="uid://bdmxsugm0to0j" path="res://scripts/level_definition_resource.gd" id="1_3c7lg"]
+
+[resource]
+script = ExtResource("1_3c7lg")
+id = "tutorial_level"
+level_scene_path = "res://scenes/levels/level_1.tscn"

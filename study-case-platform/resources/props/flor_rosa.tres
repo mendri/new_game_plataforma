@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://bc1q14e74gbeo"]
+
+[ext_resource type="Texture2D" uid="uid://dsvkmbduyaw31" path="res://assets/sprites/props/flor_rosa.png" id="1_3u5jp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u5jp"]
+atlas = ExtResource("1_3u5jp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duvn3"]
+atlas = ExtResource("1_3u5jp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1otn"]
+atlas = ExtResource("1_3u5jp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj6hi"]
+atlas = ExtResource("1_3u5jp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xv7ll"]
+atlas = ExtResource("1_3u5jp")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve04j"]
+atlas = ExtResource("1_3u5jp")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pv1j"]
+atlas = ExtResource("1_3u5jp")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uko7k"]
+atlas = ExtResource("1_3u5jp")
+region = Rect2(224, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u5jp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duvn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1otn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj6hi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xv7ll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve04j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pv1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uko7k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
