@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://dld0n12vwm76y"]
+
+[ext_resource type="Script" uid="uid://d4cdfokqgd4gx" path="res://scripts/pit_fall_death_area.gd" id="1_hmird"]
+[ext_resource type="PackedScene" uid="uid://d20y30ekmp5q5" path="res://scenes/components/random_audio_stream_player_component.tscn" id="2_op1pi"]
+[ext_resource type="AudioStream" uid="uid://cso1i8wcsutj3" path="res://assets/sfx/fall.mp3" id="3_wrvjd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktmar"]
+
+[node name="PitFallDeathArea" type="Area2D"]
+script = ExtResource("1_hmird")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ktmar")
+
+[node name="FallSfx" parent="." instance=ExtResource("2_op1pi")]
+streams = Array[AudioStream]([ExtResource("3_wrvjd")])
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

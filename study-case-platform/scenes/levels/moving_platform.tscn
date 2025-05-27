@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://ld6fd0o76vyw"]
+
+[ext_resource type="Texture2D" uid="uid://c88eisl78d822" path="res://assets/sprites/tiles/chao_centro3.png" id="1_v4aae"]
+[ext_resource type="Script" uid="uid://cqjf34y3dhkgj" path="res://scripts/moving_platform.gd" id="1_wth7u"]
+
+[sub_resource type="Curve2D" id="Curve2D_wth7u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 119, 0, 0, 0, 0, 0, -398.01, 0)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4aae"]
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_ywikc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_164i2"]
+resource_name = "default"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 2),
+"transitions": PackedFloat32Array(-1.56, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lifbi"]
+_data = {
+&"RESET": SubResource("Animation_ywikc"),
+&"default": SubResource("Animation_164i2")
+}
+
+[node name="MovingPlatform" type="Path2D"]
+curve = SubResource("Curve2D_wth7u")
+script = ExtResource("1_wth7u")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(119, 0)
+rotation = 3.14159
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(119, 0)
+rotation = -3.14159
+collision_layer = 32768
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+rotation = 3.14159
+texture = ExtResource("1_v4aae")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(0, -4.76837e-07)
+shape = SubResource("RectangleShape2D_v4aae")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lifbi")
+}
