@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://11p3m8m4sy3o"]
+
+[ext_resource type="Texture2D" uid="uid://bdsknfr234mj3" path="res://assets/sprites/props/spit.png" id="1_aahm3"]
+[ext_resource type="Script" uid="uid://c4ttu3fvcpdv0" path="res://scripts/spit.gd" id="1_c4fow"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aahm3"]
+radius = 4.0
+
+[node name="Spit" type="Node2D"]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_c4fow")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_aahm3")
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_aahm3")
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_damage_area_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

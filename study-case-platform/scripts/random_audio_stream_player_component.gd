@@ -1,3 +1,4 @@
+class_name RandomAudioStreamPlayer
 extends AudioStreamPlayer
 
 @export var streams: Array[AudioStream];
