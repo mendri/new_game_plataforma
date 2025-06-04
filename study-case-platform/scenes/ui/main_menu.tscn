@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://o8hk0s7t6jrj"]
+[gd_scene load_steps=6 format=3 uid="uid://o8hk0s7t6jrj"]
 
 [ext_resource type="Script" uid="uid://4i68ocwcw3he" path="res://scripts/main_menu.gd" id="1_fe2o3"]
 [ext_resource type="PackedScene" uid="uid://brn8xnoxu8lw5" path="res://scenes/ui/sound_button.tscn" id="1_sl1te"]
 [ext_resource type="PackedScene" uid="uid://cp6ljo08ubsjk" path="res://scenes/tilemap/grass_tile_map_layer.tscn" id="2_1g8jr"]
 [ext_resource type="PackedScene" uid="uid://oj21lokcpy05" path="res://scenes/ui/level_select_screen.tscn" id="4_m1kxf"]
+[ext_resource type="AudioStream" uid="uid://w32b8ffj481g" path="res://assets/music/menu.mp3" id="5_x2yvf"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_fe2o3")
@@ -62,3 +63,7 @@ text = "Quit"
 [node name="LevelSelectScreen" parent="CanvasLayer" instance=ExtResource("4_m1kxf")]
 unique_name_in_owner = true
 visible = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_x2yvf")
+autoplay = true
