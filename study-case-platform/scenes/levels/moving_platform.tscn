@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ld6fd0o76vyw"]
 
-[ext_resource type="Texture2D" uid="uid://c88eisl78d822" path="res://assets/sprites/tiles/chao_centro3.png" id="1_v4aae"]
 [ext_resource type="Script" uid="uid://cqjf34y3dhkgj" path="res://scripts/moving_platform.gd" id="1_wth7u"]
+[ext_resource type="Texture2D" uid="uid://cfinm74rrvmy5" path="res://assets/sprites/tiles/chao_plataforma.png" id="2_wth7u"]
 
 [sub_resource type="Curve2D" id="Curve2D_wth7u"]
 _data = {
@@ -68,7 +68,7 @@ collision_layer = 32768
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
 rotation = 3.14159
-texture = ExtResource("1_v4aae")
+texture = ExtResource("2_wth7u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
 position = Vector2(0, -4.76837e-07)

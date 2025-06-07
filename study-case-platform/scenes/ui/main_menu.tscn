@@ -1,25 +1,39 @@
-[gd_scene load_steps=6 format=3 uid="uid://o8hk0s7t6jrj"]
+[gd_scene load_steps=7 format=3 uid="uid://o8hk0s7t6jrj"]
 
 [ext_resource type="Script" uid="uid://4i68ocwcw3he" path="res://scripts/main_menu.gd" id="1_fe2o3"]
 [ext_resource type="PackedScene" uid="uid://brn8xnoxu8lw5" path="res://scenes/ui/sound_button.tscn" id="1_sl1te"]
 [ext_resource type="PackedScene" uid="uid://cp6ljo08ubsjk" path="res://scenes/tilemap/grass_tile_map_layer.tscn" id="2_1g8jr"]
+[ext_resource type="Texture2D" uid="uid://ca8xvv68hiavg" path="res://assets/sprites/tiles/backmenu.png" id="2_uhagc"]
 [ext_resource type="PackedScene" uid="uid://oj21lokcpy05" path="res://scenes/ui/level_select_screen.tscn" id="4_m1kxf"]
 [ext_resource type="AudioStream" uid="uid://w32b8ffj481g" path="res://assets/music/menu.mp3" id="5_x2yvf"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_fe2o3")
 
+[node name="Backmenu" type="Sprite2D" parent="."]
+position = Vector2(351, 185)
+scale = Vector2(2.7369, 1.47354)
+texture = ExtResource("2_uhagc")
+
 [node name="GrassTileMapLayer" parent="." instance=ExtResource("2_1g8jr")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_scale = 0.5
 
 [node name="MainMenuContainer" type="MarginContainer" parent="CanvasLayer"]
 unique_name_in_owner = true
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -55.0
+offset_right = 362.0
+offset_bottom = 112.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.5, 0.5)
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MainMenuContainer"]
 layout_mode = 2
@@ -40,9 +54,12 @@ size_flags_vertical = 4
 theme_override_constants/separation = 4
 
 [node name="Label" type="Label" parent="CanvasLayer/MainMenuContainer/PanelContainer/MarginContainer/VBoxContainer"]
+modulate = Color(0.0980392, 0, 0.0980392, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Study Case Platform"
+text = "Lhama em um mundo plataforma
+ cuspindo para todo lado"
+horizontal_alignment = 1
 
 [node name="PlayButton" parent="CanvasLayer/MainMenuContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_sl1te")]
 unique_name_in_owner = true
