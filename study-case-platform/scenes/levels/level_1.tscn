@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=4 uid="uid://bvo36q5772ihd"]
+[gd_scene load_steps=102 format=4 uid="uid://bvo36q5772ihd"]
 
 [ext_resource type="PackedScene" uid="uid://dqrrv30g2vpxc" path="res://scenes/levels/base_level.tscn" id="1_ksju7"]
 [ext_resource type="Resource" uid="uid://b1ntdjbfmt2jw" path="res://resources/levels/level_1.tres" id="2_6iamk"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dgl736bkeuuyk" path="res://assets/sprites/tiles/nuvem1.png" id="10_bahl2"]
 [ext_resource type="Texture2D" uid="uid://g4v5wccal1b5" path="res://assets/sprites/tiles/nuvem2.png" id="11_np2pn"]
 [ext_resource type="PackedScene" uid="uid://t76ryoci5wxc" path="res://scenes/goomba.tscn" id="19_v6ha0"]
+[ext_resource type="PackedScene" uid="uid://t4a2leyxwkjm" path="res://scenes/components/win_trigger_component.tscn" id="20_gmpev"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bahl2"]
 atlas = ExtResource("3_bahl2")
@@ -713,36 +714,41 @@ unique_name_in_owner = true
 position = Vector2(199, 214)
 node_to_follow = NodePath("../Player")
 
-[node name="Player" parent="." index="9"]
-position = Vector2(171, 209)
+[node name="Goomba" parent="." index="9" node_paths=PackedStringArray("player") instance=ExtResource("19_v6ha0")]
+position = Vector2(337, 193)
+player = NodePath("../Player")
 
-[node name="WindVfx" parent="." index="10" node_paths=PackedStringArray("node_to_follow") instance=ExtResource("3_nsrm0")]
-position = Vector2(843, 319)
-script = ExtResource("4_6761a")
-node_to_follow = NodePath("../Player")
-speed = 500.0
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="11"]
-stream = ExtResource("7_oc4kc")
-volume_db = -6.0
-autoplay = true
-parameters/looping = true
-
-[node name="PitFallDeathArea" parent="." index="12" instance=ExtResource("8_s8va5")]
-position = Vector2(2003, 350)
-scale = Vector2(-6.04608, -0.301195)
-
-[node name="PitFallDeathArea2" parent="." index="13" instance=ExtResource("8_s8va5")]
-position = Vector2(2829, 319)
-scale = Vector2(36.5551, 0.0907186)
-
-[node name="MovingPlatform" parent="." index="14" instance=ExtResource("9_dga24")]
+[node name="MovingPlatform" parent="." index="10" instance=ExtResource("9_dga24")]
 position = Vector2(2998.15, 239)
 scale = Vector2(0.99031, 1)
 speed = 10.0
 loop = false
 speed_scale = 0.4
 
-[node name="Goomba" parent="." index="15" node_paths=PackedStringArray("player") instance=ExtResource("19_v6ha0")]
-position = Vector2(337, 193)
-player = NodePath("../Player")
+[node name="PitFallDeathArea2" parent="." index="11" instance=ExtResource("8_s8va5")]
+position = Vector2(2829, 319)
+scale = Vector2(36.5551, 0.0907186)
+
+[node name="PitFallDeathArea" parent="." index="12" instance=ExtResource("8_s8va5")]
+position = Vector2(2003, 350)
+rotation = 3.14159
+scale = Vector2(6.04608, 0.301195)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="13"]
+stream = ExtResource("7_oc4kc")
+volume_db = -6.0
+autoplay = true
+parameters/looping = true
+
+[node name="Player" parent="." index="14"]
+position = Vector2(171, 209)
+
+[node name="WindVfx" parent="." index="15" node_paths=PackedStringArray("node_to_follow") instance=ExtResource("3_nsrm0")]
+position = Vector2(843, 319)
+script = ExtResource("4_6761a")
+node_to_follow = NodePath("../Player")
+speed = 500.0
+
+[node name="WinTriggerComponent" parent="." index="16" instance=ExtResource("20_gmpev")]
+position = Vector2(4178, 213)
+scale = Vector2(15.5736, 15.5736)

@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://dveqptd4ivw1p"]
+
+[ext_resource type="Texture2D" uid="uid://my2bgswnockr" path="res://assets/sprites/player/Lhama_mitch2.png" id="1_1cgod"]
+[ext_resource type="Script" uid="uid://csys181sliqn1" path="res://scripts/win_screen.gd" id="1_rc6je"]
+[ext_resource type="Texture2D" uid="uid://dl5l5lioydtrs" path="res://assets/sprites/tiles/background_frente.png" id="2_uqtu8"]
+[ext_resource type="Texture2D" uid="uid://01so5j1km1xg" path="res://assets/sprites/tiles/background_frente2.png" id="3_xl2x5"]
+
+[node name="WinScreen" type="Node2D"]
+script = ExtResource("1_rc6je")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 65
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Parábens você concluiu este level"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Obrigado por jogar!"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Aperte ENTER para voltar para o menu"
+horizontal_alignment = 1
+
+[node name="LhamaMitch2" type="Sprite2D" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer"]
+position = Vector2(314, 63)
+scale = Vector2(0.645962, 0.639024)
+texture = ExtResource("1_1cgod")
+
+[node name="BackgroundFrente" type="Sprite2D" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer"]
+position = Vector2(136, 310)
+scale = Vector2(2.54574, 1.80461)
+texture = ExtResource("2_uqtu8")
+
+[node name="BackgroundFrente2" type="Sprite2D" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer"]
+position = Vector2(503, 363)
+scale = Vector2(2.08118, 2.45349)
+texture = ExtResource("3_xl2x5")

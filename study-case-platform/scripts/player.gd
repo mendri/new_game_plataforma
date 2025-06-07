@@ -126,5 +126,10 @@ func _on_pit_fall_death():
 func take_damage(_damage: int) -> void:
 	is_dead = true
 	animation_player.play("death")
+	velocity = Vector2.ZERO
+	while not is_on_floor():
+		velocity.y += gravity * fall_multiplier * get_physics_process_delta_time()
+		move_and_slide()
+		await get_tree().process_frame
 	await get_tree().create_timer(0.7).timeout
 	get_tree().reload_current_scene()
