@@ -11,8 +11,8 @@
 script = ExtResource("1_fe2o3")
 
 [node name="Backmenu" type="Sprite2D" parent="."]
-position = Vector2(351, 185)
-scale = Vector2(2.7369, 1.47354)
+position = Vector2(320, 180)
+scale = Vector2(2, 2)
 texture = ExtResource("2_uhagc")
 
 [node name="GrassTileMapLayer" parent="." instance=ExtResource("2_1g8jr")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://t76ryoci5wxc"]
+[gd_scene load_steps=7 format=3 uid="uid://t76ryoci5wxc"]
 
 [ext_resource type="Script" uid="uid://0e65ucvpjgsf" path="res://scripts/goomba.gd" id="1_21hcc"]
 
@@ -10,6 +10,11 @@ size = Vector2(32, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21hcc"]
 size = Vector2(34, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1jgw"]
+size = Vector2(79, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgpj4"]
 
 [node name="Goomba" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
@@ -39,5 +44,22 @@ wait_time = 10.0
 position = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_21hcc")
 
+[node name="AreaStartExplosion" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaStartExplosion"]
+position = Vector2(16.5, 16)
+shape = SubResource("RectangleShape2D_s1jgw")
+
+[node name="HowMuchTimeToExplode" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="AreaExplosion" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaExplosion"]
+position = Vector2(16, 15)
+scale = Vector2(10.9979, 5.89238)
+shape = SubResource("RectangleShape2D_fgpj4")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="AreaStartExplosion" to="." method="_on_area_start_explosion_body_entered"]

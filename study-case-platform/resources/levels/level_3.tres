@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelDefinitionResource" load_steps=2 format=3 uid="uid://craagfiec8dwc"]
+
+[ext_resource type="Script" uid="uid://bdmxsugm0to0j" path="res://scripts/level_definition_resource.gd" id="1_jer2e"]
+
+[resource]
+script = ExtResource("1_jer2e")
+id = "fase_boss_1"
+level_scene_path = "res://scenes/levels/level_3.tscn"
+metadata/_custom_type_script = "uid://bdmxsugm0to0j"

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ca8xvv68hiavg" path="res://assets/sprites/tiles/backmenu.png" id="2_uqtu8"]
 
 [node name="WinScreen" type="Node2D"]
+position = Vector2(1, 0)
 script = ExtResource("1_rc6je")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -28,9 +29,10 @@ layout_mode = 2
 alignment = 1
 
 [node name="Backmenu" type="Sprite2D" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
-position = Vector2(317, 201)
-scale = Vector2(2.75333, 1.72667)
+position = Vector2(-12, -13)
+scale = Vector2(2.1, 2.1)
 texture = ExtResource("2_uqtu8")
+offset = Vector2(160, 90)
 
 [node name="LhamaMitch2" type="Sprite2D" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 position = Vector2(236, 288)

@@ -9,16 +9,16 @@
 [ext_resource type="Script" uid="uid://cl8tbmaqqg1cg" path="res://scripts/wind_vfx.gd" id="4_6761a"]
 [ext_resource type="PackedScene" uid="uid://cp6ljo08ubsjk" path="res://scenes/tilemap/grass_tile_map_layer.tscn" id="4_x42e6"]
 [ext_resource type="Texture2D" uid="uid://d3a3e88vvpdqi" path="res://assets/sprites/tiles/costas_da_terra.png" id="5_mkypq"]
-[ext_resource type="Texture2D" uid="uid://01so5j1km1xg" path="res://assets/sprites/tiles/background_frente2.png" id="6_dnkej"]
-[ext_resource type="Texture2D" uid="uid://dl5l5lioydtrs" path="res://assets/sprites/tiles/background_frente.png" id="6_mm8aj"]
 [ext_resource type="PackedScene" uid="uid://cw8tx852xvter" path="res://scenes/custom_camera.tscn" id="6_sk5k4"]
-[ext_resource type="Texture2D" uid="uid://d4btdyy6jygjl" path="res://assets/sprites/tiles/background_médio2.png" id="6_wtwp4"]
-[ext_resource type="Texture2D" uid="uid://c05ce68r30cdo" path="res://assets/sprites/tiles/background_medio.png" id="7_iwr0g"]
 [ext_resource type="AudioStream" uid="uid://bfavxl10xxu13" path="res://assets/music/level_1.mp3" id="7_oc4kc"]
 [ext_resource type="PackedScene" uid="uid://dld0n12vwm76y" path="res://scenes/levels/pit_fall_death_area.tscn" id="8_s8va5"]
 [ext_resource type="PackedScene" uid="uid://ld6fd0o76vyw" path="res://scenes/levels/moving_platform.tscn" id="9_dga24"]
+[ext_resource type="Texture2D" uid="uid://d37shgypo7q43" path="res://assets/sprites/tiles/background_médio.png" id="9_mkypq"]
 [ext_resource type="Texture2D" uid="uid://dgl736bkeuuyk" path="res://assets/sprites/tiles/nuvem1.png" id="10_bahl2"]
+[ext_resource type="Texture2D" uid="uid://ddr371y8eyrho" path="res://assets/sprites/tiles/background_médio2_g.png" id="10_ndtll"]
+[ext_resource type="Texture2D" uid="uid://bdlmi6e08rlpd" path="res://assets/sprites/tiles/background_frente_v2.png" id="11_mkypq"]
 [ext_resource type="Texture2D" uid="uid://g4v5wccal1b5" path="res://assets/sprites/tiles/nuvem2.png" id="11_np2pn"]
+[ext_resource type="Texture2D" uid="uid://cw1lyfsu4ttdj" path="res://assets/sprites/tiles/background_frente2_V2.png" id="12_mkypq"]
 [ext_resource type="PackedScene" uid="uid://t76ryoci5wxc" path="res://scenes/goomba.tscn" id="19_v6ha0"]
 [ext_resource type="PackedScene" uid="uid://t4a2leyxwkjm" path="res://scenes/components/win_trigger_component.tscn" id="20_gmpev"]
 
@@ -640,7 +640,7 @@ texture = ExtResource("11_np2pn")
 centered = false
 offset = Vector2(10, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+[node name="Fundo" type="Sprite2D" parent="." index="2"]
 position = Vector2(-189, 308)
 scale = Vector2(-431.25, 10.8844)
 texture = ExtResource("5_mkypq")
@@ -678,11 +678,11 @@ repeat_times = 3
 
 [node name="ForestShadowSprite" type="Sprite2D" parent="DarkForestParallax" index="0"]
 position = Vector2(0, 138)
-texture = ExtResource("6_wtwp4")
+texture = ExtResource("9_mkypq")
 centered = false
 
 [node name="ForestShadowSprite2" type="Sprite2D" parent="DarkForestParallax" index="1"]
-texture = ExtResource("7_iwr0g")
+texture = ExtResource("10_ndtll")
 centered = false
 offset = Vector2(160, 138)
 
@@ -693,13 +693,13 @@ repeat_times = 3
 
 [node name="ForestMediumLightSprite" type="Sprite2D" parent="LightForestParallax" index="0"]
 texture_filter = 1
-position = Vector2(0, 128)
-texture = ExtResource("6_mm8aj")
+position = Vector2(0, 129)
+texture = ExtResource("11_mkypq")
 centered = false
 
 [node name="ForestLightSprite" type="Sprite2D" parent="LightForestParallax" index="1"]
 texture_filter = 1
-texture = ExtResource("6_dnkej")
+texture = ExtResource("12_mkypq")
 centered = false
 offset = Vector2(160, 180)
 
@@ -784,3 +784,7 @@ offset_top = 131.0
 offset_right = -159.0
 offset_bottom = 154.0
 text = "Caminho errado amigão ->"
+
+[node name="Goomba2" parent="." index="22" node_paths=PackedStringArray("player") instance=ExtResource("19_v6ha0")]
+position = Vector2(324, 191)
+player = NodePath("../Player")

@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var ray_cast: RayCast2D = $RayCast2D
 @onready var timer: Timer = $Timer
+@onready var how_much_time_to_explode_timer: Timer = $HowMuchTimeToExplodeTimer
 
 var direction = Vector2.ZERO
 var left_bounds = Vector2.ZERO
@@ -17,6 +18,7 @@ var right_bounds = Vector2.ZERO
 enum State {
 	IDLE,
 	CHASE,
+	STARTING_TO_EXPLODE,
 }
 
 var current_state: State = State.IDLE
@@ -65,7 +67,7 @@ func change_direction(_delta):
 			else:
 				sprite.flip_h = true
 				ray_cast.target_position = Vector2(125, 0)
-	else:
+	elif current_state == State.CHASE:
 		direction = (player.position - self.position).normalized()
 		direction = sign(direction)
 
@@ -79,7 +81,7 @@ func change_direction(_delta):
 func handle_movement(delta):
 	if current_state == State.IDLE:
 		velocity = velocity.move_toward(direction * speed, acceleration * delta)
-	else:
+	elif current_state == State.CHASE:
 		velocity = velocity.move_toward(direction * chase_speed, acceleration * delta)
 
 	move_and_slide()
@@ -96,6 +98,13 @@ func take_damage(dmg_points: int) -> void:
 	if life <= 0:
 		queue_free()
 
-func _on_area_2d_body_entered(body:Node2D) -> void:
+func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		body.take_damage(1)	
+		body.take_damage(1)
+
+
+func _on_area_start_explosion_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		current_state = State.STARTING_TO_EXPLODE
+		how_much_time_to_explode_timer.start()
+		velocity = Vector2.ZERO  # Stop movement during explosion
