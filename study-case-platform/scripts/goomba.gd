@@ -10,6 +10,9 @@ extends CharacterBody2D
 @onready var ray_cast: RayCast2D = $RayCast2D
 @onready var timer: Timer = $Timer
 @onready var how_much_time_to_explode_timer: Timer = $HowMuchTimeToExplodeTimer
+@onready var explosion_sprite: Sprite2D = $ExplosionSprite
+@onready var area_explosion: Area2D = $AreaExplosion
+@onready var queue_free_timer: Timer = $QueueFreeTimer
 
 var direction = Vector2.ZERO
 var left_bounds = Vector2.ZERO
@@ -34,7 +37,9 @@ func _physics_process(delta):
 	look_for_player()
 
 func look_for_player():
-	if ray_cast.is_colliding():
+	if current_state == State.STARTING_TO_EXPLODE:
+		return
+	elif ray_cast.is_colliding():
 		var collider = ray_cast.get_collider()
 		if collider.is_in_group("player"):
 			chase_player()
@@ -77,12 +82,16 @@ func change_direction(_delta):
 		else:
 			sprite.flip_h = true
 			ray_cast.target_position = Vector2(125, 0)
+	elif current_state == State.STARTING_TO_EXPLODE:
+		direction = Vector2.ZERO
 
 func handle_movement(delta):
 	if current_state == State.IDLE:
 		velocity = velocity.move_toward(direction * speed, acceleration * delta)
 	elif current_state == State.CHASE:
 		velocity = velocity.move_toward(direction * chase_speed, acceleration * delta)
+	elif current_state == State.STARTING_TO_EXPLODE:
+		velocity = Vector2.ZERO # Stop movement during explosion
 
 	move_and_slide()
 
@@ -91,6 +100,8 @@ func handle_gravity(delta):
 		velocity.y += delta * 1000
 
 func _on_timer_timeout() -> void:
+	if current_state == State.STARTING_TO_EXPLODE:
+		return
 	current_state = State.IDLE
 
 func take_damage(dmg_points: int) -> void:
@@ -98,13 +109,18 @@ func take_damage(dmg_points: int) -> void:
 	if life <= 0:
 		queue_free()
 
+func _on_how_much_time_to_explode_timer_timeout() -> void:
+	explosion_sprite.visible = true
+	queue_free_timer.start()
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		body.take_damage(1)
 
-
 func _on_area_start_explosion_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		current_state = State.STARTING_TO_EXPLODE
 		how_much_time_to_explode_timer.start()
-		velocity = Vector2.ZERO  # Stop movement during explosion
+		current_state = State.STARTING_TO_EXPLODE
+
+func _on_queue_free_timer_timeout() -> void:
+	queue_free()

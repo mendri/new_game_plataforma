@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://t76ryoci5wxc"]
+[gd_scene load_steps=8 format=3 uid="uid://t76ryoci5wxc"]
 
 [ext_resource type="Script" uid="uid://0e65ucvpjgsf" path="res://scripts/goomba.gd" id="1_21hcc"]
 
@@ -15,6 +15,8 @@ size = Vector2(34, 34)
 size = Vector2(79, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgpj4"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_21hcc"]
 
 [node name="Goomba" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
@@ -45,12 +47,14 @@ position = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_21hcc")
 
 [node name="AreaStartExplosion" type="Area2D" parent="."]
+position = Vector2(-9, -8)
+scale = Vector2(1.44, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaStartExplosion"]
 position = Vector2(16.5, 16)
 shape = SubResource("RectangleShape2D_s1jgw")
 
-[node name="HowMuchTimeToExplode" type="Timer" parent="."]
+[node name="HowMuchTimeToExplodeTimer" type="Timer" parent="."]
 wait_time = 2.0
 
 [node name="AreaExplosion" type="Area2D" parent="."]
@@ -60,6 +64,17 @@ position = Vector2(16, 15)
 scale = Vector2(10.9979, 5.89238)
 shape = SubResource("RectangleShape2D_fgpj4")
 
+[node name="ExplosionSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(16, 15)
+scale = Vector2(219.927, -118.559)
+texture = SubResource("PlaceholderTexture2D_21hcc")
+
+[node name="QueueFreeTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="AreaStartExplosion" to="." method="_on_area_start_explosion_body_entered"]
+[connection signal="timeout" from="HowMuchTimeToExplodeTimer" to="." method="_on_how_much_time_to_explode_timer_timeout"]
+[connection signal="body_entered" from="AreaExplosion" to="." method="_on_area_explosion_body_entered"]
+[connection signal="timeout" from="QueueFreeTimer" to="." method="_on_queue_free_timer_timeout"]
