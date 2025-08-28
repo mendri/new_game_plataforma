@@ -17,3 +17,7 @@ func play_random():
 
     stream = streams.pick_random()
     play()
+
+func stop_if_playing():
+    if is_playing():
+        stop()

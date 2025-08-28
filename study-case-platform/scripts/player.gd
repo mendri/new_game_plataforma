@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 
+var checkpoint_position: Vector2 = Vector2.ZERO
 var is_dead = false
 var can_spit = false
 var can_jump_spit = false
@@ -113,6 +114,14 @@ func spit_attack(jumping):
 	get_parent().add_child(spit)
 
 func _on_pit_fall_death():
+	if checkpoint_position != Vector2.ZERO:
+		%CustomCamera.node_to_follow = null
+		await get_tree().create_timer(0.3).timeout
+		position = checkpoint_position
+		%CustomCamera.position = position
+		%CustomCamera.node_to_follow = self
+		return
+
 	can_jump_spit = false
 	jump_spit_timer.stop()
 	
@@ -124,6 +133,11 @@ func _on_pit_fall_death():
 
 
 func take_damage(_damage: int) -> void:
+	if checkpoint_position != Vector2.ZERO:
+		await get_tree().create_timer(0.3).timeout
+		position = checkpoint_position
+		return
+
 	is_dead = true
 	animation_player.play("death")
 	velocity = Vector2.ZERO
@@ -133,3 +147,6 @@ func take_damage(_damage: int) -> void:
 		await get_tree().process_frame
 	await get_tree().create_timer(0.7).timeout
 	get_tree().reload_current_scene()
+
+func set_checkpoint_position(checkpoint_pos: Vector2) -> void:
+	checkpoint_position = checkpoint_pos
