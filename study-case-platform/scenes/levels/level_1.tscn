@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=4 uid="uid://bvo36q5772ihd"]
+[gd_scene load_steps=106 format=4 uid="uid://bvo36q5772ihd"]
 
 [ext_resource type="PackedScene" uid="uid://dqrrv30g2vpxc" path="res://scenes/levels/base_level.tscn" id="1_ksju7"]
 [ext_resource type="Resource" uid="uid://b1ntdjbfmt2jw" path="res://resources/levels/level_1.tres" id="2_6iamk"]
@@ -22,6 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://t76ryoci5wxc" path="res://scenes/goomba.tscn" id="19_v6ha0"]
 [ext_resource type="PackedScene" uid="uid://t4a2leyxwkjm" path="res://scenes/components/win_trigger_component.tscn" id="20_gmpev"]
 [ext_resource type="PackedScene" uid="uid://bfe5uos7mdb52" path="res://scenes/levels/checkpoint.tscn" id="22_ndtll"]
+[ext_resource type="PackedScene" uid="uid://ctd886t6jnwpf" path="res://scenes/levels/moving_platform_vertical.tscn" id="23_7h2jl"]
+[ext_resource type="PackedScene" uid="uid://bnmhsgxdtlxf1" path="res://scenes/levels/moving_platform_vertical_reversed.tscn" id="24_mqh5v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bahl2"]
 atlas = ExtResource("3_bahl2")
@@ -735,7 +737,7 @@ autoplay = true
 parameters/looping = true
 
 [node name="Player" parent="." index="13"]
-position = Vector2(1941, 205)
+position = Vector2(126, 208)
 
 [node name="WindVfx" parent="." index="14" node_paths=PackedStringArray("node_to_follow") instance=ExtResource("3_nsrm0")]
 position = Vector2(843, 319)
@@ -748,7 +750,8 @@ position = Vector2(4090, 292)
 scale = Vector2(15.5736, 15.5736)
 
 [node name="MovingPlatform" parent="." index="16" instance=ExtResource("9_dga24")]
-position = Vector2(2394, 239)
+position = Vector2(2302.25, 239.771)
+scale = Vector2(1.77099, 1.77099)
 speed = 0.5
 loop = false
 speed_scale = 0.5
@@ -758,10 +761,10 @@ position = Vector2(-206, 265)
 scale = Vector2(-47.3191, 1)
 
 [node name="Label" type="Label" parent="." index="18"]
-offset_left = 2593.0
-offset_top = 163.0
-offset_right = 2633.0
-offset_bottom = 179.0
+offset_left = 3928.0
+offset_top = 138.0
+offset_right = 4113.0
+offset_bottom = 154.0
 text = "Chegue aqui para vencer!"
 
 [node name="Label2" type="Label" parent="." index="19"]
@@ -788,7 +791,7 @@ offset_bottom = 154.0
 text = "Caminho errado amigão ->"
 
 [node name="Goomba2" parent="." index="22" node_paths=PackedStringArray("player") instance=ExtResource("19_v6ha0")]
-position = Vector2(324, 191)
+position = Vector2(620, 193)
 player = NodePath("../Player")
 
 [node name="Checkpoint1" parent="." index="23" instance=ExtResource("22_ndtll")]
@@ -796,3 +799,15 @@ position = Vector2(2652, 159)
 
 [node name="Checkpoint2" parent="." index="24" instance=ExtResource("22_ndtll")]
 position = Vector2(3433, 95)
+
+[node name="MovingPlatformVertical" parent="." index="25" instance=ExtResource("23_7h2jl")]
+position = Vector2(3644, 117)
+speed = 0.5
+loop = false
+speed_scale = 0.5
+
+[node name="MovingPlatform2" parent="." index="26" instance=ExtResource("24_mqh5v")]
+position = Vector2(3805, 110)
+speed = 0.5
+loop = false
+speed_scale = 0.5

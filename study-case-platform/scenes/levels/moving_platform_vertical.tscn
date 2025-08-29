@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctd886t6jnwpf"]
+
+[ext_resource type="PackedScene" uid="uid://ld6fd0o76vyw" path="res://scenes/levels/moving_platform.tscn" id="1_mkxgl"]
+
+[node name="MovingPlatformVertical" instance=ExtResource("1_mkxgl")]
+rotation = 1.5708
+
+[node name="Sprite2D" parent="AnimatableBody2D" index="0"]
+rotation = 1.5708

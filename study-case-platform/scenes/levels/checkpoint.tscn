@@ -113,7 +113,8 @@ script = ExtResource("1_8h1qo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_13s36")
-animation = &"resting"
+animation = &"getting_big"
+speed_scale = 2.5
 centered = false
 
 [node name="CheckpointArea" type="Area2D" parent="."]
